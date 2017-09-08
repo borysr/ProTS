@@ -11,6 +11,15 @@ class HiFi {
     sound: string ="";
 }
 
+class Describer {
+    static getName(inputClass:any) {
+        // regex to get class name
+        var funcNameRegex = /function (.{1,})\(/;
+        var results = (funcNameRegex).exec((<any> inputClass).constructor.toString());
+        return (results && results.length > 1) ? results[1] : "";
+    }
+}
+
 var display = new Display();
 var tv = new Television();
 var led = new LEDTV();
@@ -43,3 +52,10 @@ console.log("led has name? " + hasName);
 
 hasName = "name" in hifi;
 console.log("hifi has name? " + hasName);
+
+console.log("===== runtime types ")
+var tvType = Describer.getName(tv);
+console.log("tv has type " + tvType);
+
+var ledType = Describer.getName(led);
+console.log("led has type " + ledType);

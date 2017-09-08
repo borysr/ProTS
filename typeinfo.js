@@ -35,6 +35,17 @@ var HiFi = /** @class */ (function () {
     }
     return HiFi;
 }());
+var Describer = /** @class */ (function () {
+    function Describer() {
+    }
+    Describer.getName = function (inputClass) {
+        // regex to get class name
+        var funcNameRegex = /function (.{1,})\(/;
+        var results = (funcNameRegex).exec(inputClass.constructor.toString());
+        return (results && results.length > 1) ? results[1] : "";
+    };
+    return Describer;
+}());
 var display = new Display();
 var tv = new Television();
 var led = new LEDTV();
@@ -57,3 +68,8 @@ hasName = "name" in led;
 console.log("led has name? " + hasName);
 hasName = "name" in hifi;
 console.log("hifi has name? " + hasName);
+console.log("===== runtime types ");
+var tvType = Describer.getName(tv);
+console.log("tv has type " + tvType);
+var ledType = Describer.getName(led);
+console.log("led has type " + ledType);
