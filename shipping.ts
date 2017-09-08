@@ -1,4 +1,3 @@
-module Shipping {
     // available as Shipping.IShip
     export interface IShip {
         name: string;
@@ -24,6 +23,3 @@ module Shipping {
             public displacement: number) {
         }
     }
-}
-
-var ferry: Shipping.Ferry = new Shipping.Ferry("Assurance", "London", 3220);
