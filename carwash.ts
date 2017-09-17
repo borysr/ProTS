@@ -77,3 +77,5 @@ var carWash3 = new CarWashProgram(3);
 carWash3.runWash();
 console.log("-------------");
 
+// using Abstract factory patter
+
